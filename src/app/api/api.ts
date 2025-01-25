@@ -9,7 +9,11 @@ export class Api {
 
 	private async fetch(url: string) {
 		const response = await fetch(url);
-		return await response.json();
+		try {
+			return await response.json();
+		} catch (error) {
+			return {} 
+		}
 	}
 
 	async getMenu(): Promise<Menu> {
